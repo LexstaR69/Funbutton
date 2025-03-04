@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Музыкальная кнопка</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #222;
+        }
+        button {
+            font-size: 24px;
+            padding: 20px;
+            width: 90%;
+            height: 90%;
+            border: none;
+            border-radius: 10px;
+            background-color: #ff4444;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="playButton">▶ Играть</button>
+    <audio id="audio" src="music.mp3"></audio>
+    <script>
+        const button = document.getElementById("playButton");
+        const audio = document.getElementById("audio");
+
+        button.addEventListener("click", () => {
+            audio.play();
+            button.style.display = "none"; // Скрываем кнопку после нажатия
+        });
+
+        // Если музыка закончилась, зацикливаем её
+        audio.addEventListener("ended", () => {
+            audio.play();
+        });
+    </script>
+</body>
+</html>
